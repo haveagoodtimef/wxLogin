@@ -11,8 +11,8 @@ import com.wx.auth.util.AuthUtil;
 import net.sf.json.JSONObject;
 
 /**
- *1.ÕâÊÇ»Øµ÷µØÖ·
- * code ÊÇ»Ø´«µÄ²ÎÊı
+ *1.è¿™æ˜¯å›è°ƒåœ°å€
+ * code æ˜¯å›ä¼ çš„å‚æ•°
  */
 public class CallBackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,13 +35,17 @@ public class CallBackServlet extends HttpServlet {
 					 "&lang=zh_CN";
 		JSONObject userInfo=AuthUtil.doGetJson(inforUrl);
 		System.out.println(userInfo);
-		//Ê¹ÓÃÎ¢ĞÅÓÃ»§ĞÅÏ¢Ö±½ÓµÇÂ¼
+		//ä½¿ç”¨å¾®ä¿¡ç”¨æˆ·ä¿¡æ¯ç›´æ¥ç™»å½•
 		request.setAttribute("info", userInfo);
 		request.getRequestDispatcher("/index1.jsp").forward(request, response);
 		
 		/**
-		*userInfoÖĞµÄĞÅÏ¢.
+		*userInfoä¸­çš„ä¿¡æ¯.
 		final String strOpenid =(String)userInfo.get("openid");
+		
+		//å¦‚æœæœ‰unionid,å¯ä»¥åœ¨ç›´æ¥è·å–..
+		final String strUnionid =(String)userInfo.get("unionid");
+		
 		System.out.println("openid ++>>>>>"+userInfo.get("openid"));
 		
 		final String nickname = (String)userInfo.get("nickname");
@@ -50,9 +54,9 @@ public class CallBackServlet extends HttpServlet {
 		final int sex = (int)userInfo.get("sex");
 		System.out.println("sex+>>>"+userInfo.get("sex"));
 		
-		System.out.println(userInfo.get("city")); //³ÇÊĞ
-		System.out.println(userInfo.get("province"));  //Ê¡·İ
-		System.out.println(userInfo.get("headimgurl")); //Í·Ïñ
+		System.out.println(userInfo.get("city")); //åŸå¸‚
+		System.out.println(userInfo.get("province"));  //çœä»½
+		System.out.println(userInfo.get("headimgurl")); //å¤´åƒ
 		*/
 	}
 
